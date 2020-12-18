@@ -1,0 +1,38 @@
+<section class="wrapper">
+  <header class="form">
+    <h3 class="form__title">Add data</h3>
+      <input
+        class="form__input"
+        placeholder="What is your name?"
+        type="string"
+        autofocus=""
+        [(ngModel)]="newPerson.name"
+      />
+      <input
+        class="form__input"
+        placeholder="What is your age?"
+        type="number"
+        [(ngModel)]="newPerson.age"
+      />
+      <input
+        class="form__input"
+        placeholder="What is your email?"
+        type="email"
+        [(ngModel)]="newPerson.email"
+        (keyup.enter)="addPerson()"
+      />
+      <div class="form__button" (click)="addPerson()">Submit</div>
+  </header>
+
+  <section class="main" *ngIf="persons.length > 0">
+    <ul class="main__list">
+      <li class="main__list__person" *ngFor="let person of persons">
+        <div>
+          <h4 class="main__list__person__name">{{ person.name }}</h4>
+          <p class="main__list__person__age">{{ person.age }} years old</p>
+          <p class="main__list__person__email">{{ person.email }}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
