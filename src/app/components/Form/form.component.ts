@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { FormDataService } from 'src/app/FormData/form-data.service';
-import { Person } from 'src/app/models/Person/person';
 
 @Component({
   selector: 'app-form',
@@ -11,17 +12,20 @@ import { Person } from 'src/app/models/Person/person';
 export class FormComponent implements OnInit {
   constructor(private formDataService: FormDataService) { }
 
-  newPerson: Person = new Person();
+  personForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    age: new FormControl(null, [Validators.required, Validators.max(150)]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(70)]),
+  })
 
   addPerson() {
-    this.formDataService.addPerson(this.newPerson);
-    this.newPerson = new Person()
+    this.formDataService.addPerson(this.personForm.value);
   }
 
   get persons() {
     return this.formDataService.getAllPersons();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }

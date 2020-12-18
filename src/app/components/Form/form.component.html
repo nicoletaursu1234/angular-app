@@ -1,28 +1,31 @@
 <section class="wrapper">
-  <header class="form">
+  <form class="form" [formGroup]="personForm">
     <h3 class="form__title">Add data</h3>
       <input
         class="form__input"
+        name="name"
+        formControlName="name"
         placeholder="What is your name?"
-        type="string"
+        type="text"
         autofocus=""
-        [(ngModel)]="newPerson.name"
       />
       <input
         class="form__input"
+        name="age"
+        formControlName="age"
         placeholder="What is your age?"
         type="number"
-        [(ngModel)]="newPerson.age"
       />
       <input
         class="form__input"
+        name="email"
+        formControlName="email"
         placeholder="What is your email?"
         type="email"
-        [(ngModel)]="newPerson.email"
         (keyup.enter)="addPerson()"
       />
       <div class="form__button" (click)="addPerson()">Submit</div>
-  </header>
+  </form>
 
   <section class="main" *ngIf="persons.length > 0">
     <ul class="main__list">
