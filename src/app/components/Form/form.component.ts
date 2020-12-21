@@ -15,7 +15,6 @@ export class FormComponent implements OnInit {
 
   addPerson() {
     this.formDataService.addPerson(this.newPerson);
-    this.newPerson = new Person()
   }
 
   get persons() {
