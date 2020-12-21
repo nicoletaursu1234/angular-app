@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     age: new FormControl(null, [Validators.required, Validators.max(150)]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(70)]),
-  })
+  }, { })
 
   addPerson() {
     this.formDataService.addPerson(this.personForm.value);
